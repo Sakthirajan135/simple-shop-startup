@@ -1,13 +1,46 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import { useState } from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import Header from "../components/Header";
+import ProductGrid from "../components/ProductGrid";
+import Hero from "../components/Hero";
+import Footer from "../components/Footer";
+import Cart from "../components/Cart";
+import { CartProvider } from "../context/CartContext";
 
 const Index = () => {
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <CartProvider>
+      <div className="min-h-screen bg-gray-50">
+        <Header 
+          onCartOpen={() => setIsCartOpen(true)}
+          searchQuery={searchQuery}
+          onSearchChange={setSearchQuery}
+          selectedCategory={selectedCategory}
+          onCategoryChange={setSelectedCategory}
+        />
+        
+        <Hero />
+        
+        <main className="container mx-auto px-4 py-8">
+          <ProductGrid 
+            searchQuery={searchQuery}
+            selectedCategory={selectedCategory}
+          />
+        </main>
+        
+        <Footer />
+        
+        <Cart 
+          isOpen={isCartOpen}
+          onClose={() => setIsCartOpen(false)}
+        />
       </div>
-    </div>
+    </CartProvider>
   );
 };
 
