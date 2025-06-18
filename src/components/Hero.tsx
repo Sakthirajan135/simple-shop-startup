@@ -1,4 +1,5 @@
 
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 const Hero = () => {
@@ -13,12 +14,16 @@ const Hero = () => {
           Quality products, competitive prices, and fast delivery.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" variant="secondary" className="bg-white text-blue-600 hover:bg-gray-100">
-            Shop Now
-          </Button>
-          <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
-            Learn More
-          </Button>
+          <Link to="/products">
+            <Button size="lg" variant="secondary" className="bg-white text-blue-600 hover:bg-gray-100">
+              Shop Now
+            </Button>
+          </Link>
+          <Link to="/about">
+            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
+              Learn More
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

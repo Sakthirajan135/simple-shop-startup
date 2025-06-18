@@ -1,5 +1,6 @@
 
 import { ShoppingCart, Search, User } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -22,13 +23,23 @@ const Header = ({ onCartOpen, searchQuery, onSearchChange, selectedCategory, onC
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-8">
-            <h1 className="text-2xl font-bold text-blue-600">ShopEase</h1>
+            <Link to="/" className="text-2xl font-bold text-blue-600 hover:text-blue-700">
+              ShopEase
+            </Link>
             
             <nav className="hidden md:flex space-x-6">
-              <a href="#" className="text-gray-600 hover:text-blue-600 transition-colors">Home</a>
-              <a href="#" className="text-gray-600 hover:text-blue-600 transition-colors">Products</a>
-              <a href="#" className="text-gray-600 hover:text-blue-600 transition-colors">About</a>
-              <a href="#" className="text-gray-600 hover:text-blue-600 transition-colors">Contact</a>
+              <Link to="/" className="text-gray-600 hover:text-blue-600 transition-colors">
+                Home
+              </Link>
+              <Link to="/products" className="text-gray-600 hover:text-blue-600 transition-colors">
+                Products
+              </Link>
+              <Link to="/about" className="text-gray-600 hover:text-blue-600 transition-colors">
+                About
+              </Link>
+              <Link to="/contact" className="text-gray-600 hover:text-blue-600 transition-colors">
+                Contact
+              </Link>
             </nav>
           </div>
 
